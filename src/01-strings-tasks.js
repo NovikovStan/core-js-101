@@ -224,22 +224,22 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  // const alphabetEnc = 'NOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
-  // let result = '';
-  // let isUpperCase = true;
-  // let encrypted = '';
-  // for (let i = 0; i < str.length; i + 1) {
-  //   const letter = str.charAt(i);
-  //   isUpperCase = (letter === letter.toUpperCase());
-  //   const index = alphabet.indexOf(letter);
-  //   if (isUpperCase) encrypted = alphabetEnc.charAt(index + 13);
-  //   else encrypted = alphabetEnc.charAt(index + 13).toLowerCase();
-  //   result += encrypted;
-  // }
-  // return result;
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const alphabetEnc = 'NOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLM';
+  let result = '';
+  let isUpperCase = true;
+  for (let i = 0; i < str.length; i += 1) {
+    let encrypted = '';
+    const letter = str.charAt(i);
+    isUpperCase = (letter === letter.toUpperCase());
+    const index = alphabet.indexOf(letter.toUpperCase());
+    if (index === -1) encrypted = letter;
+    else if (isUpperCase) encrypted = alphabetEnc.charAt(index);
+    else encrypted = alphabetEnc.charAt(index).toLowerCase();
+    result += encrypted;
+  }
+  return result;
 }
 
 /**
